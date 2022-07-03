@@ -11,6 +11,7 @@ export const surveyContent = {
   finish: 'Finish',
   yourScore: 'Your Score',
   result: 'Result',
+  points: 'Points',
   question: 'Question',
   questionsAnswers: [
     {
@@ -43,7 +44,6 @@ export const surveyContent = {
     },
     {
       question: 'Where are you from?',
-      placeholder: 'Please chose your country',
       tag: 'select',
       type: 'select',
       answers: [

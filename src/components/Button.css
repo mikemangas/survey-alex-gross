@@ -1,0 +1,9 @@
+.Button--light {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.Button--dark {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}

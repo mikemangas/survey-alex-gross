@@ -1,0 +1,44 @@
+.Field--checkbox--wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.Field--checkbox--miniWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  background-color: var(--color-black);
+  border: 2px solid var(--color-lightGrey);
+  border-radius: 50%;
+  color: yellow;
+  cursor: pointer;
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-lightGrey);
+  color: black;
+}
+
+select {
+  width: 100%;
+  color: white;
+  background-color: black;
+  font-size: 24px;
+  border: white 1px solid;
+}
+
+.Field--select--wrapper {
+  width: 50vw;
+  margin-bottom: 50px;
+}

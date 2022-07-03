@@ -1,77 +1,126 @@
+import './Survey.css';
 import React, { useState } from 'react';
 import Button from '../components/Button';
 import QuestionAnswers from '../components/QuestionAnswers';
+import ShowScore from '../components/ShowScore';
+import InitialView from '../components/InitialView';
+import Progress from '../components/Progress';
 import { surveyContent } from '../data/surveyContent';
 import { calculateScore } from '../helpers/calculateScore';
-const { title, lorem, startSurvey, questionsAnswers, next, back } = surveyContent;
+import { calculateProgress } from '../helpers/calculateProgress';
+const { title, lorem, startSurvey, questionsAnswers, next, back, surveyFor, enterName } = surveyContent;
+// MANAGE CHECKED
 
 export default function Survey() {
-  const [currentQuestion, setCurrentQuestion] = useState(-1);
-  const [showScore, setShowScore] = useState(false);
-  const [isSurveyStarted, setIsSurveyStarted] = useState(false);
-  const [buttonText, setButtonText] = useState(startSurvey);
-  const [value, setValue] = useState();
-  const [result, setResult] = useState([]);
-  const [score, setScore] = useState(0);
-
-  const handleButtonClick = (param) => {
-    const newResult = [...result];
-    //PROBLEMS:
-    // MANAGE WHAT TO DO IF UNDEFINED VALUE
-    // MANAGE CHECKED
-    // DISPLAY NAME FROM THE BEGINNING
-    // QUESTION 1 out of 3
-    // STYLE!!
-    if (param === 'next' && currentQuestion + 1 < questionsAnswers.length) {
-      setCurrentQuestion(currentQuestion + 1);
-      buttonText !== next && setButtonText(next);
-      if (isSurveyStarted) {
-        newResult.push(value);
-      } else {
-        setIsSurveyStarted(true);
+  const [currentQuestion, setCurrentQuestion] = useState(-1),
+    [showScore, setShowScore] = useState(false),
+    [isSurveyStarted, setIsSurveyStarted] = useState(false),
+    [buttonText, setButtonText] = useState(startSurvey),
+    [value, setValue] = useState(),
+    [result, setResult] = useState([]),
+    [score, setScore] = useState(0),
+    [name, setName] = useState(),
+    progress = calculateProgress(questionsAnswers.length, currentQuestion),
+    handleButtonClick = (param) => {
+      const newResult = [...result];
+      if (param === 'next' && currentQuestion + 1 < questionsAnswers.length) {
+        buttonText !== next && setButtonText(next);
+        if (isSurveyStarted) {
+          if (value) {
+            setCurrentQuestion(currentQuestion + 1);
+            newResult.push(value);
+            if (value.question === enterName) {
+              setName(value.answer);
+            }
+            setValue();
+          } else {
+            alert('Cannot be empty');
+          }
+        } else {
+          setCurrentQuestion(currentQuestion + 1);
+          setIsSurveyStarted(true);
+        }
+        if (currentQuestion === questionsAnswers.length - 2) {
+          setButtonText('FINISH');
+        }
+      } else if (param === 'back' && currentQuestion - 1 < questionsAnswers.length) {
+        if (currentQuestion - 1 < 0) {
+          setIsSurveyStarted(false);
+        }
+        if (currentQuestion !== questionsAnswers.length - 2) {
+          setButtonText(next);
+        }
+        setCurrentQuestion(currentQuestion - 1);
+        newResult.pop();
+      } else if (value) {
+        calculateScore(result);
+        setShowScore(true);
+        result.push(value);
+        setScore(calculateScore(result));
       }
-    } else if (param === 'back' && currentQuestion - 1 < questionsAnswers.length) {
-      if (currentQuestion - 1 < 0) {
-        setIsSurveyStarted(false);
-      }
-      setCurrentQuestion(currentQuestion - 1);
-      newResult.pop();
-    } else {
-      calculateScore(result);
-      setShowScore(true);
-      result.push(value);
-      setScore(calculateScore(result));
-    }
-    setResult(newResult);
-  };
+      setResult(newResult);
+    },
+    handleResetButton = () => {
+      setResult([]);
+      setShowScore(false);
+      setIsSurveyStarted(false);
+      setCurrentQuestion(-1);
+      setName(false);
+    };
 
   return (
-    <div className="Survey">
-      {showScore ? (
-        <h1>YOUR SCORE IS {score}</h1>
-      ) : !isSurveyStarted ? (
-        <div>
-          <h1 className="Survey--title">{title}.</h1>
-          <p className="Survey--content">{lorem}</p>
-          <Button className="Survey--button" content={startSurvey} onClick={() => handleButtonClick('next')} />
-        </div>
-      ) : (
-        <div>
-          <QuestionAnswers
-            className="Survey--questionsAnswers"
+    <div>
+      <div className="Survey">
+        {result.length > 0 && !showScore && (
+          <Progress
+            className="Survey--progress-wrapper"
+            currentQuestion={currentQuestion}
             questionsAnswers={questionsAnswers}
-            position={currentQuestion}
-            selectedValue={setValue}
+            progress={progress}
           />
-          <Button className="Survey--button" content={back.toUpperCase()} onClick={() => handleButtonClick('back')} />
-          <Button
-            className="Survey--button"
-            content={buttonText.toUpperCase()}
-            onClick={() => handleButtonClick('next')}
+        )}
+        {!isSurveyStarted ? (
+          <InitialView
+            title={title}
+            p={lorem}
+            buttonContent={startSurvey.toUpperCase()}
+            onClick={handleButtonClick}
+            divClassName="Survey--wrapper"
+            titleClassName="Survey--title"
+            pClassName="Survey--content"
+            buttonClassName="Survey--button--initial"
           />
-        </div>
-      )}
-      <div>BAR PERCENT: {'1 out of 3'}</div>
+        ) : !showScore ? (
+          <div className="Survey--wrapper">
+            {result.length > 0 && !showScore && (
+              <div className="Survey--surveyFor">
+                {surveyFor.toUpperCase()}: {name.toUpperCase()}
+              </div>
+            )}
+            <QuestionAnswers
+              className="Survey--questionsAnswers"
+              questionsAnswers={questionsAnswers}
+              position={currentQuestion}
+              selectedValue={setValue}
+            />
+            <div className="Survey--buttonWrapper Survey--button--initial">
+              <Button
+                className="Survey--button"
+                content={buttonText.toUpperCase()}
+                onClick={() => handleButtonClick('next')}
+              />
+              <Button
+                dark
+                className="Survey--button"
+                content={back.toUpperCase()}
+                onClick={() => handleButtonClick('back')}
+              />
+            </div>
+          </div>
+        ) : (
+          <ShowScore name={name} score={score} buttonContent="START NEW" onClick={handleResetButton} />
+        )}
+      </div>
     </div>
   );
 }

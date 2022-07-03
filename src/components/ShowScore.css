@@ -1,0 +1,15 @@
+.ShowScore--progress-wrapper {
+  width: 50vw;
+  margin-bottom: 100px;
+}
+
+.ShowScore--name,
+.ShowScore--score {
+  padding: 10px;
+}
+
+.ShowScore--h2,
+.ShowScore--h4,
+.ShowScore--p {
+  line-height: 0px;
+}

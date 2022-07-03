@@ -6,9 +6,9 @@ export default function QuestionAnswers({ questionsAnswers, position, className,
 
   return (
     <div className={className}>
-      <p>Question: {position + 1}</p>
-      <p>{question}</p>
-      <Field answers={answers} question={question} type={type} selectedValue={selectedValue} />
+      {position > 0 ? <h4>QUESTION {position}</h4> : <h4>{questionsAnswers[0]?.title.toUpperCase()}</h4>}
+      <h2>{question}</h2>
+      <Field answers={answers} question={question} type={type} value={selectedValue} />
     </div>
   );
 }
