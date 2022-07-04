@@ -1,3 +1,13 @@
+@import url('https://rsms.me/inter/inter.css');
+* {
+  font-family: 'Inter', sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  * {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
 *,
 *::after,
 *::before {
@@ -5,13 +15,20 @@
   border: none;
 }
 
-:root {
-  --color-lightGrey: #6a6a6a;
-  --color-grey: #707070;
-  --color-midgrey: #808080;
-  --color-darkgrey: #767676;
-  --color-black: #0d0d0d;
-  --color-white: #ffffff;
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 98vh;
+  margin: 10;
+  padding: 0;
+  background: var(--color-black) 0% 0% no-repeat padding-box;
+  color: var(--color-white);
+  border: 1px solid var(--color-lightGrey);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
@@ -46,15 +63,4 @@ button {
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
-}
-
-body {
-  height: 100vh;
-  background: var(--color-black) 0% 0% no-repeat padding-box;
-  color: var(--color-white);
-  border: 1px solid var(--color-lightGrey);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

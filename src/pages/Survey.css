@@ -25,6 +25,11 @@
   margin-top: 50px;
 }
 
+.Survey--button {
+  display: flex;
+  justify-content: center;
+}
+
 .Survey--surveyFor {
   position: absolute;
   top: 32px;

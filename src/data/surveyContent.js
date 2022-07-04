@@ -25,7 +25,7 @@ export const surveyContent = {
     {
       question: 'How often do you visit this Website?',
       tag: 'input',
-      type: 'checkbox',
+      type: 'radio',
       answers: [
         { answer: 'Often', score: 5 },
         { answer: 'Rarely', score: 3 },
@@ -35,7 +35,7 @@ export const surveyContent = {
     {
       question: 'Please select at least one option',
       tag: 'input',
-      type: 'checkbox',
+      type: 'radio',
       answers: [
         { answer: 'Option 1', score: 2 },
         { answer: 'Option 2', score: 2 },

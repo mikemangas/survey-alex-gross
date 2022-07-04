@@ -1,8 +1,8 @@
 import './ShowScore.css';
-import Button from './Button';
-import { surveyContent } from '../data/surveyContent';
-import { calculateProgress } from '../helpers/calculateProgress';
-import Progress from './Progress';
+import Button from '../Button';
+import { surveyContent } from '../../data/surveyContent';
+import { calculateProgress } from '../../helpers/calculateProgress';
+import Progress from '../Progress';
 const { yourScore, result, points } = surveyContent;
 const maxScore = 12;
 
