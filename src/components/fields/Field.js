@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Radio from './Radio';
 import Select from './Select';
 
-export default function Field({ answers, question, type, value, radioDefault }) {
+export default function Field({ answers, question, type, value, radioDefault, circle }) {
   const [defaultStatus, setDefaultStatus] = useState();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Field({ answers, question, type, value, radioDefault }) 
   if (type === 'text') {
     return <input type={type} onChange={(event) => handleChange(event)} />;
   } else if (type === 'radio') {
-    return <Radio data={answers} onChange={handleChange} defaultStatus={defaultStatus} />;
+    return <Radio data={answers} onChange={handleChange} defaultStatus={defaultStatus} circle={circle} />;
   } else if (type === 'select') {
     return <Select data={answers} onChange={handleChange} className="Field--select--wrapper" />;
   }

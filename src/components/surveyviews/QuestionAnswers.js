@@ -10,6 +10,7 @@ export default function QuestionAnswers({
   titleClassName,
   firstQuestionClass,
   questionText,
+  circle,
 }) {
   const { question, answers, type } = questionsAnswers[position];
   const [val, setVal] = useState();
@@ -23,7 +24,14 @@ export default function QuestionAnswers({
         <h4 className={firstQuestionClass}>{questionsAnswers[0]?.title}</h4>
       )}
       <h2 className={titleClassName}>{question}</h2>
-      <Field answers={answers} question={question} type={type} value={setVal} radioDefault={radioDefault} />
+      <Field
+        answers={answers}
+        question={question}
+        type={type}
+        value={setVal}
+        radioDefault={radioDefault}
+        circle={circle}
+      />
     </div>
   );
 }

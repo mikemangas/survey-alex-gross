@@ -21,13 +21,21 @@ export default function Survey() {
     [result, setResult] = useState([]),
     [score, setScore] = useState(0),
     [name, setName] = useState(),
+    [circle, setCircle] = useState(false),
     [radioDefault, setRadioDefault] = useState(true),
     progress = calculateProgress(questionsAnswers.length, currentQuestion);
   const handleButtonClick = (param) => {
     const newResult = [...result];
+    if (currentQuestion === 0) {
+      setCircle(true);
+    } else {
+      setCircle(false);
+    }
     if (param === 'next' && currentQuestion + 1 < questionsAnswers.length) {
       buttonText !== next && setButtonText(next);
       if (isSurveyStarted) {
+        console.log('curr questioN;', currentQuestion);
+
         if (value) {
           setRadioDefault(!radioDefault);
           setCurrentQuestion(currentQuestion + 1);
@@ -101,6 +109,7 @@ export default function Survey() {
             radioDefault={radioDefault}
             firstQuestionClass="Survey--firstQuestion"
             titleClassName="Survey--titleClass"
+            circle={circle}
           />
           <div className="Survey--buttonWrapper Survey--button--initial">
             <Button

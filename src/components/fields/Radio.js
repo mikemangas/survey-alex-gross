@@ -1,5 +1,9 @@
 import './Radio.css';
-export default function Radio({ data, onChange, defaultStatus }) {
+export default function Radio({ data, onChange, defaultStatus, circle }) {
+  const radioStyle = {
+    borderRadius: circle ? 50 : 0,
+  };
+
   return (
     <div className="Radio--wrapper">
       <input
@@ -13,6 +17,7 @@ export default function Radio({ data, onChange, defaultStatus }) {
         return (
           <div className="Radio--miniWrapper" key={index}>
             <input
+              style={radioStyle}
               type="radio"
               id={el.answer}
               name="checkbox"

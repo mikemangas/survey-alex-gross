@@ -18,7 +18,6 @@ input[type='radio'] {
   appearance: none;
   background-color: black;
   border: solid 2px grey;
-  border-radius: 50%;
   width: 30px;
   height: 30px;
   margin: 0;
