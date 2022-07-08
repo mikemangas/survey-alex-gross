@@ -1,43 +1,73 @@
 .Survey {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.Survey--wrapper {
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  padding: 100;
-}
-
-.Survey--wrapper {
-  padding: 15%;
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  margin: 40px;
+  border: 1px solid var(--color-lightGrey);
+  border-radius: 10px;
 }
 
 .Survey--buttonWrapper {
+  margin-top: 83px;
   display: flex;
   flex-direction: column;
   width: fit-content;
   align-items: center;
 }
-.Survey--button--initial {
-  margin-top: 50px;
+
+.Survey--title {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 97%;
 }
 
-.Survey--button {
-  display: flex;
-  justify-content: center;
+.Survey--content {
+  margin: 49px 321px 0px 321px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 132%;
+}
+
+.Survey--firstQuestion {
+  font-size: 20px;
+  line-height: 124%;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.Survey--titleClass {
+  font-size: 48px;
+  margin-bottom: 75px;
+  margin-top: 20px;
 }
 
 .Survey--surveyFor {
   position: absolute;
-  top: 32px;
-  right: 60px;
+  top: 72px;
+  right: 100px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .Survey--progress-wrapper {
   position: absolute;
-  width: 95vw;
-  bottom: 30px;
+  width: 92%;
+  margin-left: 4%;
+  margin-right: 4%;
+  bottom: 57px;
+}
+
+.Survey--questionText {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
 }

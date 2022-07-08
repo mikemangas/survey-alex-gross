@@ -9,12 +9,15 @@ export default function InitialView({
   pClassName,
   buttonClassName,
   divClassName,
+  buttonWrapperName,
 }) {
   return (
     <div className={divClassName}>
       <h1 className={titleClassName}>{title}.</h1>
       <p className={pClassName}>{p}</p>
-      <Button className={buttonClassName} content={buttonContent} onClick={() => onClick('next')} />
+      <div className={buttonWrapperName}>
+        <Button className={buttonClassName} content={buttonContent} onClick={() => onClick('next')} />
+      </div>
     </div>
   );
 }

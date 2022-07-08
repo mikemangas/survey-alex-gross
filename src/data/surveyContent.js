@@ -3,7 +3,7 @@ export const surveyContent = {
   lorem:
     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
   startSurvey: 'Start the survey',
-  enterName: 'Please enter your name',
+  enterName: 'Please enter your name.',
   whoAreYou: 'Who are you?',
   surveyFor: 'Survey for',
   next: 'Next',
@@ -16,7 +16,7 @@ export const surveyContent = {
   questionsAnswers: [
     {
       title: 'Who are you?',
-      question: 'Please enter your name',
+      question: 'Please enter your name.',
       placeholder: 'John Doe',
       tag: 'input',
       type: 'text',

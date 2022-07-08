@@ -6,8 +6,9 @@ import Select from './Select';
 
 export default function Field({ answers, question, type, value, radioDefault }) {
   const [defaultStatus, setDefaultStatus] = useState();
+
   useEffect(() => {
-    setDefaultStatus(radioDefault);
+    radioDefault && setDefaultStatus(radioDefault);
   }, [radioDefault]);
 
   const handleChange = (event) => {

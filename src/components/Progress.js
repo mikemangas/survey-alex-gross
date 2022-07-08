@@ -3,11 +3,10 @@ export default function Progress({ progress, currentQuestion, questionsAnswers, 
   const outterStyles = {
       height: height ? height : 14,
       backgroundColor: 'black',
-      borderColor: '#767676',
-      borderWidth: '1px',
+      borderColor: 'white',
+      borderWidth: '2px',
       borderStyle: 'solid',
       borderRadius: borderRadius ? borderRadius : 50,
-      marginLeft: 50,
     },
     fillerStyles = {
       height: '100%',
@@ -20,6 +19,7 @@ export default function Progress({ progress, currentQuestion, questionsAnswers, 
       textAlign: 'right',
       fontSize: '16px',
       color: '#767676',
+      marginBottom: '8px',
     };
 
   return (

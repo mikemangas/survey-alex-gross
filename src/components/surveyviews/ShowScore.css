@@ -1,7 +1,42 @@
 .ShowScore--progress-wrapper {
-  width: 50vw;
+  width: 33vw;
   margin-bottom: 100px;
 }
+
+.Survey--result {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.ShowScore--yourScore {
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.ShowScore--yourName {
+  font-size: 32px;
+}
+
+.ShowScore--result--wrapper {
+  margin-bottom: 20px;
+}
+
+.ShowScore--finalScore {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.ShowScore--points {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.ShowScore--score--wrapper {
+  margin-bottom: 24px;
+}
+/*
 
 .ShowScore--name,
 .ShowScore--score {
@@ -12,4 +47,4 @@
 .ShowScore--h4,
 .ShowScore--p {
   line-height: 0px;
-}
+} */

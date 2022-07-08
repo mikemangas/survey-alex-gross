@@ -72,62 +72,64 @@ export default function Survey() {
   };
 
   return (
-    <div>
-      <div className="Survey">
-        {result.length > 0 && !showScore && (
-          <Progress
-            className="Survey--progress-wrapper"
-            currentQuestion={currentQuestion}
-            questionsAnswers={questionsAnswers}
-            progress={progress}
-          />
-        )}
-        {!isSurveyStarted ? (
-          <InitialView
-            title={title}
-            p={lorem}
-            buttonContent={startSurvey.toUpperCase()}
-            onClick={handleButtonClick}
-            divClassName="Survey--wrapper"
-            titleClassName="Survey--title"
-            pClassName="Survey--content"
-            buttonClassName="Survey--button--initial"
-          />
-        ) : !showScore ? (
-          <div className="Survey--wrapper">
-            {result.length > 0 && !showScore && (
-              <div className="Survey--surveyFor">
-                {surveyFor.toUpperCase()}: {name.toUpperCase()}
-              </div>
-            )}
-            <QuestionAnswers
-              className="Survey--questionsAnswers"
-              questionsAnswers={questionsAnswers}
-              position={currentQuestion}
-              selectedValue={setValue}
-              radioDefault={radioDefault}
-            />
-            <div className="Survey--buttonWrapper Survey--button--initial">
-              <Button
-                className="Survey--button"
-                content={buttonText.toUpperCase()}
-                onClick={() => handleButtonClick('next')}
-                icon={<ArrowCircleRight color="black" />}
-              />
-              <Button
-                dark
-                left
-                className="Survey--button"
-                content={back.toUpperCase()}
-                onClick={() => handleButtonClick('back')}
-                icon={<ArrowLeft color="white" />}
-              />
+    <div className="Survey">
+      {!isSurveyStarted ? (
+        <InitialView
+          title={title}
+          p={lorem}
+          buttonContent={[startSurvey, <ArrowCircleRight color="black" />]}
+          onClick={handleButtonClick}
+          divClassName="Survey--wrapper"
+          titleClassName="Survey--title"
+          pClassName="Survey--content"
+          buttonClassName="Survey--button"
+          buttonWrapperName="Survey--buttonWrapper "
+        />
+      ) : !showScore ? (
+        <div className="Survey--wrapper">
+          {result.length > 0 && !showScore && (
+            <div className="Survey--surveyFor">
+              {surveyFor}: {name}
             </div>
+          )}
+          <QuestionAnswers
+            className="Survey--questionsAnswers"
+            questionsAnswers={questionsAnswers}
+            questionText="Survey--questionText"
+            position={currentQuestion}
+            selectedValue={setValue}
+            radioDefault={radioDefault}
+            firstQuestionClass="Survey--firstQuestion"
+            titleClassName="Survey--titleClass"
+          />
+          <div className="Survey--buttonWrapper Survey--button--initial">
+            <Button
+              className="Survey--button"
+              content={buttonText.toUpperCase()}
+              onClick={() => handleButtonClick('next')}
+              icon={<ArrowCircleRight color="black" />}
+            />
+            <Button
+              dark
+              left
+              className="Survey--button"
+              content={back.toUpperCase()}
+              onClick={() => handleButtonClick('back')}
+              icon={<ArrowLeft color="white" />}
+            />
           </div>
-        ) : (
-          <ShowScore name={name} score={score} buttonContent="START NEW" onClick={handleResetButton} />
-        )}
-      </div>
+          {result.length > 0 && !showScore && (
+            <Progress
+              className="Survey--progress-wrapper"
+              currentQuestion={currentQuestion}
+              questionsAnswers={questionsAnswers}
+              progress={progress}
+            />
+          )}
+        </div>
+      ) : (
+        <ShowScore name={name} score={score} buttonContent="START NEW" onClick={handleResetButton} />
+      )}
     </div>
   );
 }

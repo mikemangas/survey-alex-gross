@@ -1,9 +1,13 @@
 .Button--light {
   background-color: var(--color-white);
   color: var(--color-black);
+  display: flex;
+  gap: 45px;
 }
 
 .Button--dark {
   background-color: var(--color-black);
   color: var(--color-white);
+  display: flex;
+  gap: 10px;
 }

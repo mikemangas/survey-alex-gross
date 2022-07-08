@@ -13,54 +13,21 @@
 *::before {
   box-sizing: border-box;
   border: none;
-}
-
-html {
   margin: 0;
   padding: 0;
 }
 
 body {
-  height: 98vh;
-  margin: 10;
-  padding: 0;
   background: var(--color-black) 0% 0% no-repeat padding-box;
   color: var(--color-white);
-  border: 1px solid var(--color-lightGrey);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1 {
-  font-size: 80px;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 48px;
-  font-weight: bold;
-}
-h4 {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-p {
-  font-size: 20px;
-}
-
-input[type='text'] {
-  background-color: var(--color-black);
-  margin: 20px;
-  border-bottom: 1px solid var(--color-lightGrey);
-  color: var(--color-midgrey);
-  padding: 5px;
-  font-size: 24px;
-  outline: none;
+  box-sizing: border-box;
 }
 button {
-  padding: 15px 40px;
+  padding: 21px 60px;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: 800;
   cursor: pointer;
+  text-transform: uppercase;
 }
